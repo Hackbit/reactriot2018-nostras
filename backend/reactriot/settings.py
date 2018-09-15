@@ -39,7 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authentication',
+    'chat',
+    'channels',
 ]
+
+ASGI_APPLICATION = "chat.routing.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [env('REDIS_URL')]
+        }
+    },
+}
+
+AUTH_USER_MODEL = 'authentication.Participant'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
