@@ -1,0 +1,7 @@
+.ChatDisplay {
+  height: 100vh;
+  background: #F7F9FA;
+  opacity: .5;
+  margin: -15px;
+  padding: 40px;
+}

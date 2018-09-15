@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/dashboard.css";
 import ChatPanel from "./ChatPanel";
+import ChatBox from './ChatBox';
 
 class Dashboard extends Component {
   render() {
@@ -11,7 +12,9 @@ class Dashboard extends Component {
             <div className="logo">ANON-Y-CHAT</div>
             <ChatPanel />
           </div>
-          <div className="CenterBlock col-6" />
+          <div className="CenterBlock col-6">
+            <ChatBox/>
+          </div>
           <div className="RightBlock col" />
         </div>
       </div>

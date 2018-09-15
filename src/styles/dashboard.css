@@ -1,25 +1,30 @@
 .LeftBlock {
-  background-color: #0ba360;
+  background: linear-gradient(#3cba92, #0ba360);
   filter: blur(5);
-  background-blend-mode: screen;
 }
 .logo {
   font-family: "Caesar Dressing";
   color: white;
   font-size: 2em;
-  margin: 2% 25% 0% 25%;
+  margin: 4% 25% 0% 25%;
 }
 .RightBlock {
-  background-color: white;
+  background-color: #fff;
 }
 .CenterBlock {
-  background-color: #F7F9FA;
+  background-color: #f7f9fa;
 }
 .action-button {
   width: 60%;
   margin: 5% 0% 2.5% 20%;
   border-radius: 100%;
+  background-color: #219269;
+  color: white;
 }
-.row:first-child{
-    height: 100vh;
+.row:first-child {
+  height: 100vh;
+}
+i {
+  float: left;
+  margin-top: 3%;
 }
