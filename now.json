@@ -7,5 +7,6 @@
         "destination": "/index.html"
       }
     ]
-  }
+  },
+  "alias": "nostra-react-riot-2018"
 }
