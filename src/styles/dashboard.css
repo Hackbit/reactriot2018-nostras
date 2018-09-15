@@ -1,0 +1,25 @@
+.LeftBlock {
+  background-color: #0ba360;
+  filter: blur(5);
+  background-blend-mode: screen;
+}
+.logo {
+  font-family: "Caesar Dressing";
+  color: white;
+  font-size: 2em;
+  margin: 2% 25% 0% 25%;
+}
+.RightBlock {
+  background-color: white;
+}
+.CenterBlock {
+  background-color: #F7F9FA;
+}
+.action-button {
+  width: 60%;
+  margin: 5% 0% 2.5% 20%;
+  border-radius: 100%;
+}
+.row:first-child{
+    height: 100vh;
+}
