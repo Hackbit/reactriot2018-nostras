@@ -1,7 +1,52 @@
 .ChatDisplay {
-  height: 100vh;
-  background: #F7F9FA;
-  opacity: .5;
-  margin: -15px;
-  padding: 40px;
+  height: 80.4vh;
+  background: #f7f9fa;
+  opacity: 0.5;
+  margin: 0;
+  padding: 20px;
+  overflow-y: scroll;
+  border: 0;
+}
+.MessageForm {
+  height: 8vh;
+  padding: 0 0;
+}
+.SendButton {
+  background: linear-gradient(#0ba360, #3cba92);
+  padding: 7px;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.6em;
+  float: right;
+  margin-right: 20px;
+}
+.MessageInputsRow {
+  background-color: #ebebeb;
+  width: 104%;
+  height: 100%;
+  margin: 0;
+  z-index: 2;
+  float: left;
+}
+#MessageText {
+  background: #ebebeb;
+  height: 69px;
+  border: 0;
+}
+.BtnCol {
+  margin-top: 14px;
+  padding-left: 0;
+}
+.ChatTopBar {
+  height: 10.6vh;
+  background: #f7f9fa;
+  border-bottom: 0.66px solid #ebebeb;
+  text-align: center;
+}
+.ChatTitle {
+  font-family: "Quantico";
+  padding: 20px;
+  font-size: 35px;
 }

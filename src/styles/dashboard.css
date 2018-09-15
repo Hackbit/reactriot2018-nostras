@@ -21,7 +21,7 @@
   background-color: #219269;
   color: white;
 }
-.row:first-child {
+.Dashboard.row:first-child {
   height: 100vh;
 }
 i {

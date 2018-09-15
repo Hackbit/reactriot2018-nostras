@@ -15,7 +15,7 @@ class Dashboard extends Component {
           <div className="CenterBlock col-6">
             <ChatBox/>
           </div>
-          <div className="RightBlock col" />
+          <div className="RightBlock col-3" />
         </div>
       </div>
     );
