@@ -93,13 +93,13 @@ class Dashboard extends Component {
                 Well all that said. I surely had a lot of fun building this
                 live-chat app and hope you will have a decent experience using
                 it. ---PS-- The backend can be found at{" "}
-                <em>wss://https://django-react-riot.herokuapp.com/ws/chat</em>
+                <em>wss://django-react-riot.herokuapp.com/ws/chat</em>
                 --PS-- I allow you to use/misuse it.
               </p>
               <br />
               <p>
                 --github-- <em className="credits">github.com/parseendavid </em>
-                Feel free to throw feedback by way.
+                Feel free to throw feedback my way.
               </p>
                 <p className="BigThankYou">THANKS...</p>
             </article>

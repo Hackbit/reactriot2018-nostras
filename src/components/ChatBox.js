@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/chatbox.css";
 import { awaitConnection } from "../helpers/WebSocketConnection";
+import * as moment from "moment";
 class MessageForm extends Component {
   render() {
     return (
@@ -68,7 +69,12 @@ class ChatDisplay extends Component {
                 style={style}
               >
                 {message.content}
-              {det ? null : (<div className="AuthorTag">~{message.author}</div>)}
+                {det ? null : (
+                  <div className="AuthorTag">~{message.author}</div>
+                )}
+                {det ? null : (
+                  <div className="TimeTag">{moment(message.created_at).fromNow()}</div>
+                )}
               </div>
             </React.Fragment>
           );

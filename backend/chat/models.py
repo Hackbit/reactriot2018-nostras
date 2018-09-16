@@ -48,4 +48,4 @@ class Message(models.Model):
 
     @staticmethod
     def get_chat_messages(chat_id):
-        return Message.objects.filter(chat__id=chat_id).order_by('created_at')
+        return Message.objects.all().order_by('created_at')
