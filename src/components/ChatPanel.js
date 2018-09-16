@@ -15,7 +15,7 @@ class ChatPanel extends Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <i class="fas fa-address-book" />
+            <i className="fas fa-address-book" />
             My ChatRooms
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">

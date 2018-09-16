@@ -9,11 +9,11 @@ class ChatConsumer(WebsocketConsumer):
 
     def init_chat(self, data):
         username = data['username']
-        chatroom_id = data.get(['chatroom'], None)
+        chatroom_id = data.get('chatroom', None)
         user = Participant.objects.get_or_create(
             username=username)
         if chatroom_id:
-            chatroom = ChatRoom.objects.get(
+            chatroom = ChatRoom.objects.filter(
                 id=chatroom_id)
         else:
             chatroom = ChatRoom.objects.get_or_create(
@@ -46,9 +46,9 @@ class ChatConsumer(WebsocketConsumer):
     def new_message(self, data):
         author = data['from']
         text = data['message']
-        room = data['to']
+        room_id = data['to']
         author_user, chatroom = Participant.objects.get_or_create(
-            username=author), ChatRoom.objects.get_or_create(name=room)
+            username=author), ChatRoom.objects.get_or_create(id=room_id)
         message = Message.objects.create(
             author=author_user[0], content=text, chat=chatroom[0])
         content = {
