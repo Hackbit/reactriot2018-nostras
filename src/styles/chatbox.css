@@ -38,7 +38,7 @@
 #BtnCol {
   margin-top: 14px;
   padding-left: 0;
-  position: absolute;
+  position: relative;
 }
 .ChatTopBar {
   height: 10.6vh;

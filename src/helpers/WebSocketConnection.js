@@ -35,6 +35,12 @@ class webSocketConnection {
   startChat(username) {
     this.post({ command: "init_chat", username: username });
   }
+  sendMessage(data) {
+    this.post({
+      command: "new_message",
+      ...data
+    });
+  }
 }
 export const awaitConnection = (socket, callback) => {
   const recursion = awaitConnection;

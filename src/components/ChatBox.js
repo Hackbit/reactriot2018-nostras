@@ -4,17 +4,23 @@ import { awaitConnection } from "../helpers/WebSocketConnection";
 class MessageForm extends Component {
   render() {
     return (
-      <form className="MessageForm">
+      <form
+        className="MessageForm"
+        onSubmit={e => this.props.sendMessage(e, this.props.message)}
+      >
         <div className="row MessageInputsRow">
           <div className="col-10">
             <input
               className="form-control"
               id="MessageText"
-              placeholder="Enter Text Here"
+              onChange={this.props.messageChange}
+              value={this.props.message}
+              placeholder="Type a Message"
+              required
             />
           </div>
           <div className="col" id="BtnCol">
-            <button className="SendButton">
+            <button className="SendButton" type="submit">
               <i className="fas fa-paper-plane" />
             </button>
           </div>
@@ -33,17 +39,39 @@ class ChatTopBar extends Component {
   }
 }
 class ChatBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: "",
+      ...props
+    };
+  }
   componentDidMount() {
     let { socket, user } = this.props;
     awaitConnection(socket, () => socket.startChat(user));
   }
+  sendMessage = (e, message) => {
+    e.preventDefault();
+    let { socket, user } = this.props;
+    let data = { message, from: user, to: user+'-room' };
+    awaitConnection(socket, () => socket.sendMessage(data));
+    console.log(data);
+  };
+
+  messageChange = event => {
+    this.setState({ message: event.target.value });
+  };
 
   render() {
     return (
       <div className="ChatBox">
         <ChatTopBar />
-        <div className="ChatDisplay">Hello</div>
-        <MessageForm />
+        <div className="ChatDisplay">{this.state.message}</div>
+        <MessageForm
+          message={this.state.message}
+          sendMessage={this.sendMessage}
+          messageChange={this.messageChange}
+        />
       </div>
     );
   }

@@ -2,21 +2,25 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
 from .models import Participant
-from .models import Message
+from .models import Message, ChatRoom
 
 
 class ChatConsumer(WebsocketConsumer):
 
     def init_chat(self, data):
         username = data['username']
-        user, created = Participant.objects.get_or_create(username=username)
+        user, chatroom = Participant.objects.get_or_create(
+            username=username), ChatRoom.objects.get_or_create(
+                name=username+'-room')
         content = {
             'command': 'init_chat'
         }
         if not user:
-            content['error'] = 'Unable to get or create User with username: ' + username
+            content['error'] = 'Unable to get or create User with username: '\
+                + username
             self.send_message(content)
-        content['success'] = 'Chat init success with username: ' + username
+        content['success'] = 'Chat init success with username:{} in room {} '\
+            .format(user[0].username, chatroom[0].name)
         self.send_message(content)
 
     def fetch_messages(self, data):
@@ -29,9 +33,12 @@ class ChatConsumer(WebsocketConsumer):
 
     def new_message(self, data):
         author = data['from']
-        text = data['text']
-        author_user, created = Participant.objects.get_or_create(username=author)
-        message = Message.objects.create(author=author_user, content=text)
+        text = data['message']
+        room = data['to']
+        author_user, chatroom = Participant.objects.get_or_create(
+            username=author), ChatRoom.objects.get_or_create(name=room)
+        message = Message.objects.create(
+            author=author_user[0], content=text, chat=chatroom[0])
         content = {
             'command': 'new_message',
             'message': self.message_to_json(message)
