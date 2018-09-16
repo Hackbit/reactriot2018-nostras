@@ -9,7 +9,7 @@ class BeforeChat extends Component {
   render() {
     return (
       <React.Fragment>
-        <img src={BreathingGif} id="Breather" alt=""/>
+        <img src={BreathingGif} id="Breather" />
         <form className="UserForm" onSubmit={this.props.setUserName}>
           <input
             className="form-control UserNameInput"
@@ -31,8 +31,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       username: localStorage.getItem("username") || "",
-      socketConnection: null,
-      chatrooms: JSON.parse(localStorage.getItem("chatrooms")) || []
+      socketConnection: null
     };
     this.username = React.createRef();
   }
@@ -46,7 +45,7 @@ class Dashboard extends Component {
   setUserName = e => {
     e.preventDefault();
     this.setState({ username: this.username.current.value });
-    localStorage.setItem("username", this.username.current.value);
+    localStorage.setItem("username", this.username.current.value );
   };
 
   render() {
@@ -55,7 +54,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="LeftBlock col-3">
             <div className="logo">ANON-Y-CHAT</div>
-            <ChatPanel chatrooms={this.state.chatrooms} />
+            <ChatPanel />
           </div>
           {this.state.username ? (
             <div className="CenterBlock col-6">

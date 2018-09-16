@@ -1,6 +1,7 @@
 .LeftBlock {
   background: linear-gradient(#3cba92, #0ba360);
   filter: blur(5);
+  height: 95vh;
 }
 .logo {
   font-family: "Caesar Dressing";
@@ -27,4 +28,30 @@
 i {
   float: left;
   margin-top: 3%;
+}
+.UserForm {
+  position: absolute;
+  width: 50vw;
+  z-index: 1;
+  margin: 33vw;
+  margin-top: 20vw;
+  margin-left: 37vw;
+}
+.UserNameInput {
+  width: 90vw;
+  text-align: center;
+}
+.UserBtn {
+  margin: 20px;
+  width: 23vw;
+  height: 4vh;
+  margin-left: 14vw;
+  background: linear-gradient(#3cba92, #0ba360);
+  color: #fff;
+}
+#Breather {
+  height: 30vh;
+  margin-left: 50vw;
+  z-index: 1;
+  position: absolute;
 }

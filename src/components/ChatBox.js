@@ -108,14 +108,14 @@ class ChatBox extends Component {
     this.state = {
       messages: [],
       message: "",
-      chatroom: "",
+      chatroom: localStorage.getItem("chatroom") || "",
       chatroom_id: "",
       ...props
     };
   }
   componentWillMount() {
-    let { socket, username } = this.props;
-    awaitConnection(socket, () => socket.startChat(username));
+    let { socket, username, chatroom } = this.props;
+    awaitConnection(socket, () => socket.startChat(username, chatroom));
     socket.setCallbacks({
       init_chat: this.initChat,
       new_message: this.loadNewMessage,
@@ -126,13 +126,14 @@ class ChatBox extends Component {
   sendMessage = (e, message) => {
     e.preventDefault();
     let { socket, username } = this.props;
-    let data = { message, from: username, to: username + "-room" };
+    let data = { message, from: username, to: this.state.chatroom };
     awaitConnection(socket, () => socket.sendMessage(data));
     this.setState({ message: "" });
   };
 
   initChat = data => {
     this.setState({ ...data.data });
+    localStorage.setItem("chatroom_id", data.data.chatroom_id)
   };
   loadNewMessage = data => {
     this.setState({ messages: [...this.state.messages, data.message] });

@@ -1,4 +1,11 @@
-.ChatPanel{
-    color: black;
-    padding: 25vh 0 0 0;
+.ChatPanel {
+  color: black;
+  padding: 25vh 0 0 0;
+}
+.JoinForm {
+  padding: 10%;
+  align-items: center;
+}
+.JoinForm input {
+  text-align: center;
 }

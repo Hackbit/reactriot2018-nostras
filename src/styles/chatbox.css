@@ -44,7 +44,7 @@
 .ChatTopBar {
   height: 10.6vh;
   background: #f7f9fa;
-  border-bottom: 0.66px solid #ebebeb;
+  /* border-bottom: 0.66px solid #ebebeb; */
   display: inline;
 }
 .ChatTitle {

@@ -9,7 +9,7 @@ class webSocketConnection {
     return webSocketConnection.instance;
   }
   connect() {
-    const path = "wss://django-react-riot.herokuapp.com/ws/chat";
+    const path = "ws://localhost:5000/ws/chat";
     this.socketRef = new WebSocket(path);
     this.socketRef.onopen = () => {
       console.log("WebSocket opened");
@@ -51,8 +51,8 @@ class webSocketConnection {
       console.log(err.message);
     }
   }
-  startChat(username) {
-    this.post({ command: "init_chat", username: username });
+  startChat(username, chatroom) {
+    this.post({ command: "init_chat", username: username, chatroom: chatroom });
   }
   sendMessage(data) {
     this.post({
@@ -61,7 +61,7 @@ class webSocketConnection {
     });
   }
   fetchMessages(chatroom) {
-    console.log(chatroom);
+    console.log(chatroom)
     this.post({ command: "fetch_messages", chatroom: chatroom });
   }
 }

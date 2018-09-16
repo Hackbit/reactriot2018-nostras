@@ -9,9 +9,16 @@ class ChatConsumer(WebsocketConsumer):
 
     def init_chat(self, data):
         username = data['username']
-        user, chatroom = Participant.objects.get_or_create(
-            username=username), ChatRoom.objects.get_or_create(
-                name=username+'-room')
+        chatroom_id = data.get(['chatroom'], None)
+        user = Participant.objects.get_or_create(
+            username=username)
+        if chatroom_id:
+            chatroom = ChatRoom.objects.get(
+                id=chatroom_id)
+        else:
+            chatroom = ChatRoom.objects.get_or_create(
+                name=username+"'s-room"
+            )
         content = {
             'command': 'init_chat'
         }
