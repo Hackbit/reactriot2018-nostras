@@ -25,6 +25,30 @@ class webSocketConnection {
       this.connect();
     };
   }
+  post(data) {
+    try {
+      this.socketRef.send(JSON.stringify({ ...data }));
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+  startChat(username) {
+    this.post({ command: "init_chat", username: username });
+  }
 }
-
+export const awaitConnection = (socket, callback) => {
+  const recursion = awaitConnection;
+  const socketRef = socket ? socket.socketRef: null;
+  setTimeout(function() {
+      if (socketRef.readyState === 1) {
+      if (callback != null) {
+        callback();
+      }
+      return;
+    } else {
+      console.log("waiting...");
+      recursion(socket, callback);
+    }
+  }, 50);
+};
 export default webSocketConnection;

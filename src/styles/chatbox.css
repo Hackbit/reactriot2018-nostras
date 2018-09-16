@@ -35,9 +35,10 @@
   height: 69px;
   border: 0;
 }
-.BtnCol {
+#BtnCol {
   margin-top: 14px;
   padding-left: 0;
+  position: absolute;
 }
 .ChatTopBar {
   height: 10.6vh;

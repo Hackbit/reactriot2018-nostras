@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/chatbox.css";
+import { awaitConnection } from "../helpers/WebSocketConnection";
 class MessageForm extends Component {
   render() {
     return (
@@ -12,7 +13,7 @@ class MessageForm extends Component {
               placeholder="Enter Text Here"
             />
           </div>
-          <div className="col BtnCol">
+          <div className="col" id="BtnCol">
             <button className="SendButton">
               <i className="fas fa-paper-plane" />
             </button>
@@ -32,6 +33,11 @@ class ChatTopBar extends Component {
   }
 }
 class ChatBox extends Component {
+  componentDidMount() {
+    let { socket, user } = this.props;
+    awaitConnection(socket, () => socket.startChat(user));
+  }
+
   render() {
     return (
       <div className="ChatBox">

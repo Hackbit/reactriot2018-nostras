@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 import "../styles/dashboard.css";
 import ChatPanel from "./ChatPanel";
-import ChatBox from './ChatBox';
-import WebSocketConnection from '../helpers/WebSocketConnection'
+import ChatBox from "./ChatBox";
+import WebSocketConnection from "../helpers/WebSocketConnection";
 
 class Dashboard extends Component {
-  componentDidMount(){
-    let socketConnection = new WebSocketConnection.instantiate()
-    socketConnection.connect()
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: "Mango-People",
+      socketConnection: null
+    };
+  }
+  componentWillMount() {
+    let socket = new WebSocketConnection.instantiate();
+    socket.connect();
+    this.setState({
+      socketConnection: socket
+    });
   }
   render() {
     return (
@@ -18,7 +28,10 @@ class Dashboard extends Component {
             <ChatPanel />
           </div>
           <div className="CenterBlock col-6">
-            <ChatBox/>
+            <ChatBox
+              socket={this.state.socketConnection}
+              user={this.state.user}
+            />
           </div>
           <div className="RightBlock col-3" />
         </div>

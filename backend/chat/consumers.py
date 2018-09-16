@@ -16,7 +16,7 @@ class ChatConsumer(WebsocketConsumer):
         if not user:
             content['error'] = 'Unable to get or create User with username: ' + username
             self.send_message(content)
-        content['success'] = 'Chatting in with success with username: ' + username
+        content['success'] = 'Chat init success with username: ' + username
         self.send_message(content)
 
     def fetch_messages(self, data):
