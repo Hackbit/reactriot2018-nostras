@@ -9,7 +9,7 @@ class BeforeChat extends Component {
   render() {
     return (
       <React.Fragment>
-        <img src={BreathingGif} id="Breather" alt=""/>
+        <img src={BreathingGif} id="Breather" alt="" />
         <form className="UserForm" onSubmit={this.props.setUserName}>
           <input
             className="form-control UserNameInput"
@@ -32,7 +32,8 @@ class Dashboard extends Component {
     this.state = {
       username: localStorage.getItem("username") || "",
       socketConnection: null,
-      chatrooms: JSON.parse(localStorage.getItem("chatrooms")) || []
+      chatrooms: JSON.parse(localStorage.getItem("chatrooms")) || [],
+      chatroom_id: localStorage.getItem("chatroom_id") || ""
     };
     this.username = React.createRef();
   }
@@ -55,7 +56,10 @@ class Dashboard extends Component {
         <div className="row">
           <div className="LeftBlock col-3">
             <div className="logo">ANON-Y-CHAT</div>
-            <ChatPanel chatrooms={this.state.chatrooms} />
+            <ChatPanel
+              chatrooms={this.state.chatrooms}
+              chatroom_id={this.state.chatroom_id}
+            />
           </div>
           {this.state.username ? (
             <div className="CenterBlock col-6">
