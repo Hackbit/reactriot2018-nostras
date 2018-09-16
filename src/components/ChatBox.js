@@ -73,7 +73,9 @@ class ChatDisplay extends Component {
                   <div className="AuthorTag">~{message.author}</div>
                 )}
                 {det ? null : (
-                  <div className="TimeTag">{moment(message.created_at).fromNow()}</div>
+                  <div className="TimeTag">
+                    {moment(message.created_at).fromNow()}
+                  </div>
                 )}
               </div>
             </React.Fragment>
@@ -140,7 +142,9 @@ class ChatBox extends Component {
   };
 
   loadNewMessage = data => {
-    this.setState({ messages: [...this.state.messages, data.message] });
+    if (data.chat === this.state.chatroom_id) {
+      this.setState({ messages: [...this.state.messages, data.message] });
+    }
   };
   fetchMessages = data => {
     this.setState({ messages: [...data.messages] });

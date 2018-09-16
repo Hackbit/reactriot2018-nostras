@@ -19,7 +19,7 @@ class ChatRoom(models.Model):
     )
     password = models.CharField(_('password'), max_length=128)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
-                           
+
 
 class Message(models.Model):
 
@@ -48,4 +48,4 @@ class Message(models.Model):
 
     @staticmethod
     def get_chat_messages(chat_id):
-        return Message.objects.all().order_by('created_at')
+        return Message.objects.filter(chat__id=chat_id).order_by('created_at')

@@ -61,7 +61,6 @@ class webSocketConnection {
     });
   }
   fetchMessages(chatroom) {
-    console.log(chatroom);
     this.post({ command: "fetch_messages", chatroom: chatroom });
   }
 }
