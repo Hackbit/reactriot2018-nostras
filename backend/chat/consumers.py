@@ -21,6 +21,10 @@ class ChatConsumer(WebsocketConsumer):
             self.send_message(content)
         content['success'] = 'Chat init success with username:{} in room {} '\
             .format(user[0].username, chatroom[0].name)
+        content['data'] = {
+            'username': user[0].username,
+            'chatroom': chatroom[0].name
+        }
         self.send_message(content)
 
     def fetch_messages(self, data):
@@ -41,7 +45,9 @@ class ChatConsumer(WebsocketConsumer):
             author=author_user[0], content=text, chat=chatroom[0])
         content = {
             'command': 'new_message',
-            'message': self.message_to_json(message)
+            'message': self.message_to_json(message),
+            'chat': str(message.chat.id),
+            'chat_name': str(message.chat.name),
         }
         self.send_chat_message(content)
 

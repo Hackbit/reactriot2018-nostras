@@ -8,7 +8,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "Mango-People",
+      username: "Mango-People",
       socketConnection: null
     };
   }
@@ -30,7 +30,7 @@ class Dashboard extends Component {
           <div className="CenterBlock col-6">
             <ChatBox
               socket={this.state.socketConnection}
-              user={this.state.user}
+              username={this.state.username}
             />
           </div>
           <div className="RightBlock col-3" />
