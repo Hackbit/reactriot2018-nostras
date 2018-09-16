@@ -4,7 +4,8 @@
   opacity: 0.5;
   margin: 0;
   padding: 20px;
-  overflow-y: scroll;
+  overflow: auto;
+  overscroll-behavior-y: contain;
   border: 0;
 }
 .MessageForm {
@@ -91,4 +92,7 @@
   font-family: "Nunito Sans", sans-serif;
   position: relative;
   border-radius: 6px;
+}
+ul {
+  list-style: none;
 }

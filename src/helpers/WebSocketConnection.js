@@ -1,6 +1,6 @@
 class webSocketConnection {
   static instance = null;
-  callbacks = { init_chat: null, new_message: null };
+  callbacks = { init_chat: null, new_message: null, fetch_messages: null };
 
   static instantiate() {
     if (!webSocketConnection.instance) {
@@ -23,6 +23,9 @@ class webSocketConnection {
           break;
         case "new_message":
           this.callbacks.new_message(data);
+          break;
+        case "messages":
+          this.callbacks.fetch_messages(data);
           break;
         default:
           console.log("You might wanna talk security.");
@@ -56,6 +59,10 @@ class webSocketConnection {
       command: "new_message",
       ...data
     });
+  }
+  fetchMessages(chatroom) {
+    console.log(chatroom);
+    this.post({ command: "fetch_messages", chatroom: chatroom });
   }
 }
 export const awaitConnection = (socket, callback) => {

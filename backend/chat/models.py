@@ -45,3 +45,7 @@ class Message(models.Model):
     )
     content = models.TextField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
+
+    @staticmethod
+    def get_chat_messages(chat_id):
+        return Message.objects.filter(chat__id=chat_id)

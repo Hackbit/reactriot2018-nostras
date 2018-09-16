@@ -23,12 +23,13 @@ class ChatConsumer(WebsocketConsumer):
             .format(user[0].username, chatroom[0].name)
         content['data'] = {
             'username': user[0].username,
-            'chatroom': chatroom[0].name
+            'chatroom': chatroom[0].name,
+            'chatroom_id': str(chatroom[0].id),
         }
         self.send_message(content)
 
     def fetch_messages(self, data):
-        messages = Message.get_chat_messages(data.get('chat_id'))
+        messages = Message.get_chat_messages(data.get('chatroom'))
         content = {
             'command': 'messages',
             'messages': self.messages_to_json(messages)
