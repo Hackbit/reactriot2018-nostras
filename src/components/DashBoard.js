@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/dashboard.css";
 import BreathingGif from "../styles/breather.gif";
+import Nostras from "../styles/nostradamus.jpg";
 import ChatPanel from "./ChatPanel";
 import ChatBox from "./ChatBox";
 import WebSocketConnection from "../helpers/WebSocketConnection";
@@ -8,7 +9,7 @@ import WebSocketConnection from "../helpers/WebSocketConnection";
 class BeforeChat extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="CenterBlock col-6" id="BeforeChat">
         <img src={BreathingGif} id="Breather" alt="" />
         <form className="UserForm" onSubmit={this.props.setUserName}>
           <input
@@ -22,7 +23,7 @@ class BeforeChat extends Component {
             Use Me
           </button>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -72,7 +73,37 @@ class Dashboard extends Component {
           ) : (
             <BeforeChat setUserName={this.setUserName} useref={this.username} />
           )}
-          <div className="RightBlock col-3" />
+          <div className="RightBlock col-3">
+            <h3 className="Nostitle">A Little Nugget About Team Nostras</h3>
+            <div className="container NostHolder">
+              <img src={Nostras} alt="" className="img-thumbnail Nostras" />
+            </div>
+            <article className="floss">
+              <p>
+                {" "}
+                Well first off, Nostras is a one Dev team. Unfortunately a
+                python back-end developer(Disclaimer for all the bugs you might
+                encounter. Hopefully none). I recently started to tinker more
+                with JS and frontend frameworks and so this as both a challenge
+                and learning opportunity and at-least I had a reason to stay
+                indoors for the whole weekend.
+              </p>
+              <br />
+              <p className="credits">
+                Well all that said. I surely had a lot of fun building this
+                live-chat app and hope you will have a decent experience using
+                it. ---PS-- The backend can be found at{" "}
+                <em>wss://https://django-react-riot.herokuapp.com/ws/chat</em>
+                --PS-- I allow you to use/misuse it.
+              </p>
+              <br />
+              <p>
+                --github-- <em className="credits">github.com/parseendavid </em>
+                Feel free to throw feedback by way.
+              </p>
+                <p className="BigThankYou">THANKS...</p>
+            </article>
+          </div>
         </div>
       </div>
     );
