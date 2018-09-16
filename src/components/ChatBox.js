@@ -29,6 +29,7 @@ class MessageForm extends Component {
     );
   }
 }
+
 class ChatDisplay extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,6 @@ class ChatDisplay extends Component {
     this.myRef = React.createRef();
   }
   componentDidMount() {
-    console.log(this.props);
     awaitConnection(this.state.socket, () =>
       this.state.socket.fetchMessages(this.props.chatroom_id)
     );
@@ -59,15 +59,18 @@ class ChatDisplay extends Component {
             marginRight: det ? "auto" : 0
           };
           return (
-            <li
-              className={`MessageContainer ${
-                det ? "box sent" : " box received"
-              }`}
-              key={message.id}
-              style={style}
-            >
-              {message.content}
-            </li>
+            <React.Fragment>
+              <div
+                className={`MessageContainer ${
+                  det ? "box sent" : " box received"
+                }`}
+                key={message.id}
+                style={style}
+              >
+                {message.content}
+              {det ? null : (<div className="AuthorTag">~{message.author}</div>)}
+              </div>
+            </React.Fragment>
           );
         })}
       </ul>
@@ -108,24 +111,21 @@ class ChatBox extends Component {
     this.state = {
       messages: [],
       message: "",
-      chatroom_id: localStorage.getItem("chatroom_id") || "",
       chatroom: "",
       ...props
     };
   }
   componentWillMount() {
     let { socket, username } = this.props;
-    let {chatroom_id} = this.state
-    console.log("cr",chatroom_id)
+    let { chatroom_id } = this.state;
     awaitConnection(socket, () => socket.startChat(username, chatroom_id));
     socket.setCallbacks({
       init_chat: this.initChat,
       new_message: this.loadNewMessage,
       fetch_messages: this.fetchMessages
     });
-    console.log(this.state);
   }
-  sendMessage = (e, message, chatroom_id) => {
+  sendMessage = (e, message) => {
     e.preventDefault();
     let { socket, username } = this.props;
     let data = { message, from: username, to: this.state.chatroom_id };
@@ -133,19 +133,18 @@ class ChatBox extends Component {
     this.setState({ message: "" });
   };
 
-  initChat = data => {
-    this.setState({ ...data.data });
-    localStorage.setItem("chatroom_id", data.data.chatroom_id)
-  };
   loadNewMessage = data => {
     this.setState({ messages: [...this.state.messages, data.message] });
   };
   fetchMessages = data => {
-    console.log(data);
     this.setState({ messages: [...data.messages] });
   };
   messageChange = event => {
     this.setState({ message: event.target.value });
+  };
+  initChat = data => {
+    this.setState({ ...data.data });
+    localStorage.setItem("chatroom_id", data.data.chatroom_id);
   };
 
   render() {

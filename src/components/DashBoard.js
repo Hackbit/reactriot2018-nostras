@@ -66,6 +66,7 @@ class Dashboard extends Component {
               <ChatBox
                 socket={this.state.socketConnection}
                 username={this.state.username}
+                chatroom_id={this.state.chatroom_id}
               />
             </div>
           ) : (
