@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import "../styles/dashboard.css";
 import ChatPanel from "./ChatPanel";
 import ChatBox from './ChatBox';
+import WebSocketConnection from '../helpers/WebSocketConnection'
 
 class Dashboard extends Component {
+  componentDidMount(){
+    let socketConnection = new WebSocketConnection.instantiate()
+    socketConnection.connect()
+  }
   render() {
     return (
       <div className="DashBoard">

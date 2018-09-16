@@ -24,9 +24,11 @@ class MessageForm extends Component {
 }
 class ChatTopBar extends Component {
   render() {
-    return (<div className="ChatTopBar">
-      <h2 className="ChatTitle">Chat Name</h2>
-    </div>)
+    return (
+      <div className="ChatTopBar">
+        <h2 className="ChatTitle">Chat Name</h2>
+      </div>
+    );
   }
 }
 class ChatBox extends Component {
@@ -34,64 +36,7 @@ class ChatBox extends Component {
     return (
       <div className="ChatBox">
         <ChatTopBar />
-        <div className="ChatDisplay">
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-          <h1>ALL MESSAGES GO HERE</h1>
-        </div>
+        <div className="ChatDisplay">Hello</div>
         <MessageForm />
       </div>
     );
