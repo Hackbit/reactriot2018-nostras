@@ -8,7 +8,7 @@ class webSocketConnection {
     return webSocketConnection.instance;
   }
   connect() {
-    const path = "ws://localhost:5000/ws/chat";
+    const path = "wss://django-react-riot.herokuapp.com/ws/chat";
     this.socketRef = new WebSocket(path);
     this.socketRef.onopen = () => {
       console.log("WebSocket opened");
@@ -38,9 +38,9 @@ class webSocketConnection {
 }
 export const awaitConnection = (socket, callback) => {
   const recursion = awaitConnection;
-  const socketRef = socket ? socket.socketRef: null;
+  const socketRef = socket ? socket.socketRef : null;
   setTimeout(function() {
-      if (socketRef.readyState === 1) {
+    if (socketRef.readyState === 1) {
       if (callback != null) {
         callback();
       }
@@ -49,6 +49,6 @@ export const awaitConnection = (socket, callback) => {
       console.log("waiting...");
       recursion(socket, callback);
     }
-  }, 50);
+  }, 500);
 };
 export default webSocketConnection;
