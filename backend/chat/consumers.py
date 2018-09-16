@@ -13,7 +13,7 @@ class ChatConsumer(WebsocketConsumer):
         user = Participant.objects.get_or_create(
             username=username)
         if chatroom_id:
-            chatroom = ChatRoom.objects.filter(
+            chatroom = ChatRoom.objects.get_or_create(
                 id=chatroom_id)
         else:
             chatroom = ChatRoom.objects.get_or_create(
